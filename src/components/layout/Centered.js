@@ -1,7 +1,8 @@
+import {forwardRef} from 'react';
 import styles from './Centered.module.css';
 
-export default function Centered({children}) {
-  return (<div className={styles.centered}>
+export default forwardRef(function Centered({children}, ref) {
+  return (<div ref={ref} className={styles.centered}>
     <div className={styles.inner}>{children}</div>
   </div>);
-}
+});

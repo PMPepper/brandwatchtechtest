@@ -1,7 +1,8 @@
 import {useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux';
 
 //Components
+import TransitionBetween from 'components/transitions/TransitionBetween';
 import Centered from 'components/layout/Centered';
 import Pending from 'components/pending/Pending';
 
@@ -23,9 +24,15 @@ function App() {
 
   console.log(topics, status);
 
-  return (<Centered>
-    <Pending size="large" />
-  </Centered>);
+  return (<TransitionBetween show={status === 'idle' ? 'loading' : status}>
+    <Centered key="loading">
+      <Pending size="large" />
+    </Centered>
+
+    <div key="succeeded">TODO success</div>
+
+    <div key="error">TODO error</div>
+  </TransitionBetween>);
 }
 
 export default App;
