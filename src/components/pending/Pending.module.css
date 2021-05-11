@@ -6,13 +6,18 @@
 .pending:after {
   content: " ";
   display: block;
-  width: 64px;
-  height: 64px;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
   margin: 8px;
   border-radius: 50%;
   border: 6px solid #5E5E5E;
   border-color: #5E5E5E transparent #5E5E5E transparent;
   animation: pending 1.2s linear infinite;
+}
+
+.large {
+  width: 200px;
+  height: 200px;
 }
 
 @keyframes pending {
