@@ -1,4 +1,4 @@
-import Pending from '../pending/Pending';
+import Pending from 'components/pending/Pending';
 
 
 function App() {
