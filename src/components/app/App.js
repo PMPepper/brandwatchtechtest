@@ -1,8 +1,11 @@
+import Pending from '../pending/Pending';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Pending />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
