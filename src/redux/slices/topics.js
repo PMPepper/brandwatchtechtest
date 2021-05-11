@@ -1,14 +1,40 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
+import client from 'api/client';
+
+export const fetchTopics = createAsyncThunk('topics/fetchTopics', async () => {
+  const response = await client.getTopics();
+  return response.topics
+})
 
 export const slice = createSlice({
   name: 'topics',
-  initialState: [],
+  initialState: {
+    topics: [],
+    status: 'idle',
+    error: null
+  },
   reducers: {
 
   },
+  extraReducers: {
+    [fetchTopics.pending]: (state, action) => {
+      state.status = 'loading'
+    },
+    [fetchTopics.fulfilled]: (state, action) => {
+      state.status = 'succeeded'
+      //TODO intelligently merge loaded data with existing data, to avoid
+      //unnecessary renders
+      state.topics = action.payload
+    },
+    [fetchTopics.rejected]: (state, action) => {
+      state.status = 'failed'
+      state.error = action.error.message
+    }
+  }
 });
 
-export const {} = slice.actions;
+
+//export const {} = slice.actions;
 
 
 // // The function below is called a thunk and allows us to perform async logic. It
