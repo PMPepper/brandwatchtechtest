@@ -1,0 +1,40 @@
+
+.list {
+  display: block;
+  margin: 0;
+  padding: 0 5px 0 0;
+}
+
+.item {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.space {
+  margin: 10px 0;
+}
+
+.term {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+.term::after {
+  content: ': ';
+}
+
+.definition {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}

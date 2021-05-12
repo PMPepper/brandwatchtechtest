@@ -24,11 +24,11 @@
 }
 
 .container {
-  flex: 0 0 calc(100% - 200px);
+  flex: 0 0 calc(100% - 320px);
   overflow: hidden;
   height: 100%;
 }
 
 .info {
-  flex: 0 0 200px;
+  flex: 0 0 320px;
 }

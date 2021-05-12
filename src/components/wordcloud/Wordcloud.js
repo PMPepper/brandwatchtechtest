@@ -2,7 +2,7 @@ import {useMemo} from 'react';
 import ReactWordcloud from 'react-wordcloud';
 
 
-export default function Wordcloud({width, height, words}) {
+export default function Wordcloud({width, height, words, onWordClick = null}) {
 
   const options = useMemo(
     () => {
@@ -26,16 +26,18 @@ export default function Wordcloud({width, height, words}) {
     [width, height]
   );
 
+  const callbacks = useMemo(
+    () => ({
+      getWordColor: word => word.colour,
+      onWordClick,
+    }),
+    [onWordClick]
+  )
+
   return <ReactWordcloud
     callbacks={callbacks}
     options={options}
     size={wordCloudSize}
     words={words}
   />
-}
-
-const callbacks = {
-  getWordColor: word => word.colour,
-  onWordClick: console.log,
-  onWordMouseOver: console.log,
 }

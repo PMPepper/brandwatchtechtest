@@ -1,5 +1,6 @@
-import {useMemo} from 'react';
+import {useMemo, useState} from 'react';
 
+import SelectedTopic from 'components/topics/SelectedTopic';
 import Wordcloud from 'components/wordcloud/Wordcloud';
 
 import useElementSize from 'hooks/useElementSize';
@@ -10,6 +11,10 @@ import styles from './Topics.module.css';
 export default function Topics({topics}) {
   const [elementRef, elementSize] = useElementSize();
 
+  //State
+  const [selectedWord, setSelectedWord] = useState(null);
+
+  //Memos
   const words = useMemo(
     () => {
       const sortedTopics = [...topics];//clone topics array, to sort it
@@ -26,7 +31,7 @@ export default function Topics({topics}) {
               'red'
               :
               'grey',
-          sentiment: topic.sentiment
+          topic
         }
       })
     },
@@ -44,9 +49,11 @@ export default function Topics({topics}) {
     </header>
     <section className={styles.content}>
       <div className={styles.container} ref={elementRef}>
-        <Wordcloud width={width} height={height} words={words} />
+        <Wordcloud width={width} height={height} words={words} onWordClick={setSelectedWord} />
       </div>
-      <div className={styles.info}></div>
+      <div className={styles.info}>
+        <SelectedTopic topic={selectedWord?.topic} />
+      </div>
     </section>
   </div>
 }
