@@ -32,3 +32,18 @@
 .info {
   flex: 0 0 320px;
 }
+
+@media all and (max-width: 1023px) {
+  .content {
+    flex-flow: column nowrap;
+  }
+
+  .container {
+    height: auto;
+    flex: 1 1 auto;
+  }
+
+  .info {
+    flex: 0 0 auto;
+  }
+}

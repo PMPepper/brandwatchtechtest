@@ -14,7 +14,7 @@ export default function Wordcloud({width, height, words, onWordClick = null}) {
         rotations: 0,
         enableTooltip: false,
         fontFamily: "'Arial', -apple-system, 'Helvetica Neue', 'Droid Sans'",
-        fontSizes: [maxFontSize / 5, maxFontSize],
+        fontSizes: [Math.max(maxFontSize / 5, 12), maxFontSize],
         deterministic: true
       };
     },
