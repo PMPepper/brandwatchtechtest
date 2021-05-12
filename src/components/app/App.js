@@ -31,7 +31,7 @@ function App() {
 
     <Topics key="succeeded" topics={topics} />
 
-    <Error key="error" error={error} />
+    <Error key="failed" message="Unable to load topics. Please check your internet connection." error={error} retry={() => dispatch(fetchTopics())} />
   </TransitionBetween>);
 }
 

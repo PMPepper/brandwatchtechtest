@@ -1,0 +1,19 @@
+
+
+.error {
+  padding: 5px;
+}
+
+.message {
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+
+.err {
+  display: inline-block;
+  font-family: monospace;
+}
+
+.retry {
+
+}
