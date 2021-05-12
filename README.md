@@ -4,6 +4,12 @@ This is the project I created for the Brandwatch technical test. It is based on
 create-react-app, for speed of development. It utilises react-redux as the state
 manager, and various other modules.
 
+Once downloaded, run:
+
+### `npm install`
+
+before any other commands
+
 ## Available Scripts
 
 In the project directory, you can run:
