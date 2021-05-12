@@ -1,6 +1,12 @@
 import {useMemo} from 'react';
+import PropTypes from 'prop-types';
 import ReactWordcloud from 'react-wordcloud';
 
+import isPositiveNonzeroNumber from 'prop-types/is-positive-nonzero-number';
+
+// Test runner errors if we do not do this. Probably some issue with how the module
+// is being exported
+const ReactWordcloudComponent = ReactWordcloud.default || ReactWordcloud;
 
 export default function Wordcloud({width, height, words, onWordClick = null}) {
 
@@ -34,10 +40,23 @@ export default function Wordcloud({width, height, words, onWordClick = null}) {
     [onWordClick]
   )
 
-  return <ReactWordcloud
+  return <ReactWordcloudComponent
     callbacks={callbacks}
     options={options}
     size={wordCloudSize}
     words={words}
   />
+}
+
+if(process.env.NODE_ENV !== 'production') {
+  Wordcloud.propTypes = {
+    width: isPositiveNonzeroNumber.isRequired,
+    height: isPositiveNonzeroNumber.isRequired,
+    words: PropTypes.arrayOf(PropTypes.shape({
+      text: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+      colour: PropTypes.string.isRequired
+    })).isRequired,
+    onWordClick: PropTypes.func
+  };
 }
